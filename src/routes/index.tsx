@@ -7,8 +7,10 @@ import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
 import { Achievements } from "@/components/Achievements";
+import { Timeline } from "@/components/Timeline";
 import { Contact, Footer } from "@/components/Contact";
 import { AIChat } from "@/components/AIChat";
+import { CustomCursor } from "@/components/CustomCursor";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,9 +47,11 @@ function Index() {
       <Skills />
       <Projects />
       <Achievements />
+      <Timeline />
       <Contact />
       <Footer />
       <AIChat />
+      <CustomCursor />
     </main>
   );
 }
