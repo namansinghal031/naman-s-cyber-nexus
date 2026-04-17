@@ -37,6 +37,10 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Naman Singhal — Portfolio" },
+      { name: "twitter:description", content: "CS student × aspiring Cyber Security Engineer building with GenAI." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/af3128df-b39a-4268-b446-6d1608709494/id-preview-213dbe24--58ea98d2-1112-4ddb-8089-236af15b527e.lovable.app-1776459566997.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/af3128df-b39a-4268-b446-6d1608709494/id-preview-213dbe24--58ea98d2-1112-4ddb-8089-236af15b527e.lovable.app-1776459566997.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
