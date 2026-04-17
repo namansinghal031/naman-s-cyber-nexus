@@ -13,8 +13,9 @@ export function CustomCursor() {
     if (window.matchMedia("(pointer: coarse)").matches) return;
     setEnabled(true);
 
-    const dot = dotRef.current!;
-    const ring = ringRef.current!;
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
     let mx = 0, my = 0, rx = 0, ry = 0;
 
     const move = (e: MouseEvent) => {
