@@ -1,26 +1,53 @@
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { FloatingNav } from "@/components/FloatingNav";
+import { CommandPalette } from "@/components/CommandPalette";
+import { Hero } from "@/components/Hero";
+import { About } from "@/components/About";
+import { Skills } from "@/components/Skills";
+import { Projects } from "@/components/Projects";
+import { Achievements } from "@/components/Achievements";
+import { Contact, Footer } from "@/components/Contact";
+import { AIChat } from "@/components/AIChat";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Naman Singhal — CS Student × Cyber Security Engineer" },
+      { name: "description", content: "Personal portfolio of Naman Singhal — Computer Science student, aspiring Cyber Security Engineer, building with GenAI." },
+      { property: "og:title", content: "Naman Singhal — Building Intelligent Systems × Future Cyber Defender" },
+      { property: "og:description", content: "Portfolio, projects, certifications, and an AI sidekick that talks about Naman." },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  const [palette, setPalette] = useState(false);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setPalette((o) => !o);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  return (
+    <main className="relative">
+      <FloatingNav onOpenPalette={() => setPalette(true)} />
+      <CommandPalette open={palette} onClose={() => setPalette(false)} />
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Achievements />
+      <Contact />
+      <Footer />
+      <AIChat />
+    </main>
+  );
 }
